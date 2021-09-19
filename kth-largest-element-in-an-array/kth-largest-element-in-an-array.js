@@ -5,37 +5,38 @@
  */
 var findKthLargest = function(nums, k) {
     k=nums.length-k;
-    let swap=function(list,start,end){
-        let temp=list[start];
-        list[start]=list[end];
-        list[end]=temp;
+    let swap=function(start,end){
+        let temp=nums[start];
+        nums[start]=nums[end];
+        nums[end]=temp;
     }
-    let partition=function(list,start,end){
-        let pivot=list[Math.floor((start+end)/2)];
+    let partition=function(start,end){
+        let pivot=nums[Math.floor((start+end)/2)];
         while(start<=end){
-            while(list[start]<pivot){
+            while(nums[start]<pivot){
                 start++;
             }
-            while(list[end]>pivot){
+            while(nums[end]>pivot){
                 end--;
             }
             if(start<=end){
-                swap(list,start,end);
+                swap(start,end);
                 start++;
                 end--;
             }
         }
         return start;
     }
-    let quickSort=function(list,start,end){
-        let temp=partition(list,start,end);
+    let quickSort=function(start,end){
+        let temp=partition(start,end);
         if(start<temp-1){
-            quickSort(list,start,temp-1)
+            quickSort(start,temp-1)
         }
         if(temp<end){
-            quickSort(list,temp,end)
+            quickSort(temp,end)
         }
-        return list;
+
     }
-    return quickSort(nums,0,nums.length-1)[k]
+    quickSort(0,nums.length-1)
+    return nums[k]
 };
