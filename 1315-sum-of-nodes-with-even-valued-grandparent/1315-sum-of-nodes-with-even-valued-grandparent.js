@@ -11,45 +11,27 @@
  * @return {number}
  */
 var sumEvenGrandparent = function(root) {
-    let answer=[];
-    let start=[];
-    start.push(root)
-    let findEven=function(given){
-        let deep=[];
-        for(let i=0;i<given.length;i++){
-            console.log(given[i].val)
-            if(given[i].val%2==0){
-                answer.push(given[i]);
-            }
-            if(given[i].left!=null){
-                deep.push(given[i].left);
-            }
-            if(given[i].right!=null){
-                deep.push(given[i].right);
-            }
-        }
-        if(deep.length>0){
-            return findEven(deep);
-        }
-    }
-    findEven(start)
+    let answer=0;
     let son=[];
-    let grandSon=[];
-    for(let i=0;i<answer.length;i++){
-        if(answer[i].left!=null){
-            son.push(answer[i].left);
+    son.push(false);
+    son.push(false);
+    let findGrandSon=function(root,son){
+        if(son.shift()){
+            answer+=root.val;
         }
-        if(answer[i].right!=null){
-            son.push(answer[i].right);
-        }        
-    }
-    for(let i=0;i<son.length;i++){
-        if(son[i].left!=null){
-            grandSon.push(son[i].left);
+        let isEven=root.val%2==0;
+        if(isEven){
+            son.push(true)
+        }else{
+            son.push(false)
         }
-        if(son[i].right!=null){
-            grandSon.push(son[i].right);
-        }        
+        if(root.left!=null){
+            findGrandSon(root.left,son.slice())
+        }
+        if(root.right!=null){
+            findGrandSon(root.right,son.slice())          
+        }
     }
-    return grandSon.reduce((previousValue, currentValue) => previousValue + currentValue.val,0);
+    findGrandSon(root,son);
+    return answer;
 };
