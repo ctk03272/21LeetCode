@@ -13,8 +13,6 @@
 var isUnivalTree = function(root) {
     let answer=true;
     let isU=function(root,prev){
-        console.log(root)
-        console.log(prev)
         if(root==null) return;
         if(root.val!=prev){
             answer=false;
