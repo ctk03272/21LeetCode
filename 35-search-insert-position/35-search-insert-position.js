@@ -1,8 +1,3 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
 var searchInsert = function(nums, target) {
     var start=0;
     var end=nums.length;
@@ -19,6 +14,5 @@ var searchInsert = function(nums, target) {
             result=end;
         }
     }
-    return result;
-    
+    return result;    
 };
