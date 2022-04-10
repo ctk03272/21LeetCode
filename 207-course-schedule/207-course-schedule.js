@@ -2,7 +2,9 @@
  * @param {number} numCourses
  * @param {number[][]} prerequisites
  * @return {boolean}
- */
+ *
+/
+// 해당 솔루션은 틀렸습니다. 수정이 필요합니다.
 var canFinish = function(numCourses, prerequisites) {
     let stack=[];
     let adj=Array.from(Array(numCourses+1), ()=>Array());
