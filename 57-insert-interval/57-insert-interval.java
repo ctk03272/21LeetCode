@@ -16,10 +16,11 @@ class Solution {
 			ints.add(newInterval);
 		}
 		ArrayList<int[]> ans = new ArrayList<>();
-		ints.stream().forEachOrdered(current -> {
+		for (int i = 0; i < ints.size(); i++) {
+			int[] current=ints.get(i);
 			if (ans.isEmpty()) {
 				ans.add(current);
-				return;
+				continue;
 			}
 			int[] last = ans.get(ans.size() - 1);
 			int lastStart = last[0];
@@ -32,12 +33,10 @@ class Solution {
 				merged[0] = lastStart;
 				merged[1] = Math.max(lastEnd, currentEnd);
 				ans.set(ans.size() - 1, merged);
-				return;
 			} else {
 				ans.add(current);
-				return;
 			}
-		});
+		}
 		return ans.stream().toArray(int[][]::new);
 	}
 }
