@@ -20,8 +20,11 @@ class Solution {
 			}
 		}
 		String ans="";
-		for (int i = 0; i < stringStack.size(); i++) {
-			ans=ans+"/"+stringStack.get(i);
+		// for (int i = 0; i < stringStack.size(); i++) {
+		// 	ans=ans+"/"+stringStack.get(i);
+		// }
+		while (!stringStack.isEmpty()){
+			ans="/"+stringStack.pop()+ans;
 		}
 		return ans.length()==0?"/":ans;
 	}
