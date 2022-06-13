@@ -19,6 +19,10 @@ class Solution {
 				}
 			}
 		}
-		return "/"+stringStack.stream().collect(Collectors.joining("/"));
+		String ans="";
+		for (int i = 0; i < stringStack.size(); i++) {
+			ans=ans+"/"+stringStack.get(i);
+		}
+		return ans.length()==0?"/":ans;
 	}
 }
