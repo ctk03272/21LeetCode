@@ -4,18 +4,22 @@ class Solution {
 	int k;
 
 	public List<List<Integer>> combine(int n, int k) {
-		List<List<Integer>> ans = new ArrayList<>();
-		if (k > n || k < 0) {
-			return ans;
-		}
-
-		if (k == 0) {
-			ans.add(new ArrayList<>());
-			return ans;
-		}
-		ans = combine(n - 1, k - 1);
-		ans.stream().forEach(list -> list.add(n));
-		ans.addAll(combine(n - 1, k));
+		this.n = n;
+		this.k = k;
+		this.ans = new ArrayList<>();
+		makeCombination(new ArrayList<Integer>(), 1);
 		return ans;
+	}
+
+	public void makeCombination(List<Integer> list, int index) {
+		if (list.size() == k) {
+			ans.add(list);
+			return;
+		}
+		for (int i = index; i <= n; i++) {
+			List<Integer> temp = new ArrayList<>(list);
+			temp.add(i);
+			makeCombination(temp, i + 1);
+		}
 	}
 }
