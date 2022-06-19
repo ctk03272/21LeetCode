@@ -16,9 +16,7 @@ var combine = function (n, k) {
         ans = findAnswer(n - 1, k - 1);
         ans.forEach(a => a.push(n));
         let temp=findAnswer(n - 1, k);
-        if(temp.length>0){
-            ans.push(...temp);
-        }
+        ans.push(...temp);
         return ans;
     }
     return findAnswer(n,k);
