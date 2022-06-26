@@ -5,8 +5,9 @@ class Solution {
 	public boolean isMatch(String s, String p) {
 		int sLenth = s.length();
 		int pLength = p.length();
+        			if (p == null || pLength == 0) {
+
 		if (s == null || sLenth == 0) {
-			if (p == null || pLength == 0) {
 				return true;
 			} else {
 				return false;
