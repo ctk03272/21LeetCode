@@ -13,7 +13,7 @@ class Solution {
             digits[i] = temp
         }
         if (add==1){
-            return digits.reversed().plus(add).reversed().toIntArray();
+            return intArrayOf(1).plus(digits)
         }
         return digits;
     }
