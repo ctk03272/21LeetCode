@@ -9,15 +9,15 @@
  */
 class Solution {
     fun deleteDuplicates(head: ListNode?): ListNode? {
-        val number = mutableSetOf<Int>();
+        var number=-101
         val answer = head
         var now = head
         var prev: ListNode? = null
         while (now != null) {
-            if (number.contains(now.`val`)) {
+            if (number==now.`val`) {
                 prev?.next = now.next
             } else {
-                number.add(now.`val`)
+                number=now.`val`
                 prev=now
             }
             now = now.next
